@@ -15,8 +15,8 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:layout_marginBottom="10dp"
-        android:text="Bienvenido a\nC y V"
-        android:textSize="50sp"
+        android:text="Bienvenido\na\nC y V"
+        android:textSize="45sp"
         android:textAlignment="center"
         android:fontFamily="sans-serif-thin" />
     <Button
@@ -30,7 +30,7 @@
         android:textStyle="bold"
         android:text="Añadir un producto"
         android:background="@color/colorAccent"
-        android:onClick="openActivity" />
+        android:onClick="openActivityOne" />
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
@@ -54,5 +54,5 @@
         android:textStyle="bold"
         android:text="Ganancias"
         android:background="@color/colorAccent"
-        android:onClick="openActivity" />
+        android:onClick="openActivityThree" />
 </LinearLayout>
