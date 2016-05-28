@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alki.comproyvendo">
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,8 +19,10 @@
         </activity>
         <activity
             android:name=".Activity1"
-            android:label="Activity1">
-        </activity>
+            android:label="Agregar un producto"></activity>
+        <activity
+            android:name=".Activity3"
+            android:label="Ganancias"></activity>
     </application>
 
 </manifest>
