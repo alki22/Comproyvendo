@@ -4,24 +4,23 @@ public class Product {
 
     private int id;
     private String name;
-    private int price;
+    private int buyPrice;
+    private int sellPrice;
+    private int quantity;
 
     public Product()
     {
     }
 
-    public Product(int id,String name,int price)
+    public Product(int id, String name,int buyPrice, int sellPrice, int quantity)
     {
         this.id=id;
         this.name=name;
-        this.price= price;
+        this.buyPrice=buyPrice;
+        this.sellPrice=sellPrice;
+        this.quantity=quantity;
     }
 
-    public Product(String name,int price)
-    {
-        this.name=name;
-        this.price=price;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -31,20 +30,24 @@ public class Product {
         this.name = name;
     }
 
-    public void setAddress(int price) {
-        this.price = price;
-    }
+    public void setBuyPrice(int buyPrice) { this.buyPrice = buyPrice; }
 
-    public int getId() {
+    public void setSellPrice(int sellPrice) { this.sellPrice = sellPrice; }
 
-        return id;
-    }
+    public void setQuantity(int quantity) { this.quantity = quantity; }
 
-    public int getPrice() {
-        return price;
-    }
+    public int getId() {return id; }
 
     public String getName() {
         return name;
     }
+
+    public int getBuyPrice() {
+        return buyPrice;
+    }
+
+    public int getSellPrice() { return sellPrice; }
+
+    public int getQuantity() { return quantity; }
+
 }
