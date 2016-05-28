@@ -9,95 +9,105 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
-    // Database Version
-    private static final int DATABASE_VERSION = 1;
-    // Database Name
-    private static final String DATABASE_NAME = "productsInfo";
-    // Contacts table name
+    // Database Version.
+    private static final int DATABASE_VERSION = 2;
+    // Database Name.
+    private static final String DATABASE_NAME = "ProductsINFO";
+    // Products table name.
     private static final String TABLE_PRODUCTS = "products";
-    // Products Table Columns names
+    // Products Table Columns names.
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
-    private static final String KEY_PRICE ="price";
+    private static final String KEY_BUYPRICE ="buyPrice";
+    private static final String KEY_SELLPRICE ="sellPrice";
+    private static final String KEY_QUANTITY = "quantity";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT,"
-                + KEY_PRICE + " INTEGER" + ")";
-        db.execSQL(CREATE_CONTACTS_TABLE);
+        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + TABLE_PRODUCTS + "("
+                + KEY_ID + " INTEGER PRIMARY KEY ," + KEY_NAME + " TEXT,"
+                + KEY_BUYPRICE + " INTEGER," + KEY_SELLPRICE + " INTEGER,"
+                + KEY_QUANTITY + " INTEGER" + ");";
+        db.execSQL(CREATE_PRODUCTS_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-// Drop older table if existed
+// Drop older table if existed.
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PRODUCTS);
-// Creating tables again
+// Creating tables again.
         onCreate(db);
     }
-    // Adding new product
+    // Adding new product.
     public void addProduct(Product product) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, product.getName()); // Product Name
-        values.put(String.valueOf((KEY_PRICE)), product.getPrice()); // Product Phone Number
+        values.put(KEY_NAME, product.getName()); // Product's Name.
+        values.put((KEY_BUYPRICE), String.valueOf(product.getBuyPrice())); // Product's buy price.
+        values.put(KEY_SELLPRICE, String.valueOf(product.getSellPrice())); // Product's sell price.
+        values.put(KEY_QUANTITY, String.valueOf(product.getQuantity()));
 
-// Inserting Row
+        // Inserting Row.
         db.insert(TABLE_PRODUCTS, null, values);
-        db.close(); // Closing database connection
+        // Closing database connection.
+        db.close();
     }
-    // Getting one product
+    // Getting one product.
     public Product getProduct(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_PRODUCTS, new String[]{KEY_ID,
-                        KEY_NAME, (KEY_PRICE)}, KEY_ID + "=?", // VER ESTO!!!
+                        KEY_NAME, KEY_BUYPRICE, KEY_SELLPRICE, KEY_QUANTITY}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        Product contact = new Product(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), Integer.parseInt(cursor.getString(2)));
+        Product product = new Product(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)), Integer.parseInt(cursor.getString(4)));
         cursor.close();
-// return product
-        return contact;
+        // return product.
+        return product;
     }
-    // Getting All products
+    // Getting All products.
     public List<Product> getAllProducts() {
         List<Product> productList = new ArrayList<Product>();
-// Select All Query
+        // Select All Query.
         String selectQuery = "SELECT * FROM " + TABLE_PRODUCTS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-// looping through all rows and adding to list
+        // looping through all rows and adding to list.
         if (cursor.moveToFirst()) {
             do {
                 Product product = new Product();
                 product.setId(Integer.parseInt(cursor.getString(0)));
                 product.setName(cursor.getString(1));
-                product.setAddress(cursor.getInt(2));
-// Adding contact to list
+                product.setBuyPrice(cursor.getInt(2));
+                product.setSellPrice(cursor.getInt(3));
+                product.setQuantity(cursor.getInt(4));
+                // Adding product to list.
                 productList.add(product);
             } while (cursor.moveToNext());
         }
         cursor.close();
-// return contact list
+        // return product list.
         return productList;
     }
-    // Getting products Count
+    // Getting products Count.
     public int getProductsCount() {
         String countQuery = "SELECT * FROM " + TABLE_PRODUCTS;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
+        int count = cursor.getCount();
+        // closing cursor.
         cursor.close();
-
-// return count
-        return cursor.getCount();
+        // return count.
+        return count;
     }
     // Updating a product
     public int updateProduct(Product product) {
@@ -105,14 +115,16 @@ public class DBHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, product.getName());
-        values.put(String.valueOf(KEY_PRICE), product.getPrice());
+        values.put(String.valueOf(KEY_BUYPRICE), product.getBuyPrice());
+        values.put(String.valueOf(KEY_SELLPRICE), product.getSellPrice());
+        values.put(String.valueOf(KEY_QUANTITY), product.getQuantity());
 
-// updating row
+    // updating row.
         return db.update(TABLE_PRODUCTS, values, KEY_ID + " = ?",
                 new String[]{String.valueOf(product.getId())});
     }
 
-    // Deleting a product
+    // Deleting a product.
     public void deleteProduct(Product product) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PRODUCTS, KEY_ID + " = ?",
