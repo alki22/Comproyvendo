@@ -10,28 +10,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.alki.comproyvendo.Activity1">
     <EditText
+        android:id="@+id/name"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:hint="Nombre del producto"
         android:layout_weight="1"
         />
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:hint="Precio" />
-    <SurfaceView
+        android:id="@+id/buyPrice"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
-        android:onClick="" />
+        android:layout_weight="1"
+        android:hint="Precio de compra" />
+    <EditText
+        android:id="@+id/sellPrice"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Precio de venta" />
+    <EditText
+        android:id="@+id/quantity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Cantidad" />
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Agregar"
         android:background="@color/colorAccent"
-        android:layout_gravity="right"
-        android:onClick=""/>
+        android:layout_gravity="end"
+        android:onClick="addProduct" />
 </LinearLayout>
