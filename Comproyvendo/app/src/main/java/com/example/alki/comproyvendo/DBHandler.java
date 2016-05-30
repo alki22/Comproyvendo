@@ -3,24 +3,26 @@ package com.example.alki.comproyvendo;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBHandler extends SQLiteOpenHelper {
     // Database Version.
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     // Database Name.
     private static final String DATABASE_NAME = "ProductsINFO";
     // Products table name.
     private static final String TABLE_PRODUCTS = "products";
     // Products Table Columns names.
-    private static final String KEY_ID = "id";
-    private static final String KEY_NAME = "name";
-    private static final String KEY_BUYPRICE ="buyPrice";
-    private static final String KEY_SELLPRICE ="sellPrice";
-    private static final String KEY_QUANTITY = "quantity";
+    public static final String KEY_ID = "_id";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_BUYPRICE ="buyPrice";
+    public static final String KEY_SELLPRICE ="sellPrice";
+    public static final String KEY_QUANTITY = "quantity";
 
     public DBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -125,10 +127,21 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     // Deleting a product.
-    public void deleteProduct(Product product) {
+    public void deleteProduct(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_PRODUCTS, KEY_ID + " = ?",
-                new String[] { String.valueOf(product.getId()) });
-        db.close();
+            db.delete(TABLE_PRODUCTS, KEY_ID +  "=" + id, null);
+    }
+
+    public Cursor fetchAllProducts() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor mCursor = db.query(TABLE_PRODUCTS, new String[] {KEY_ID,
+                        KEY_NAME, KEY_BUYPRICE, KEY_SELLPRICE, KEY_QUANTITY},
+                null, null, null, null, null);
+
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
     }
 }

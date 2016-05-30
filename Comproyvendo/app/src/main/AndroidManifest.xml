@@ -19,10 +19,16 @@
         </activity>
         <activity
             android:name=".Activity1"
-            android:label="Agregar un producto"></activity>
+            android:label="Agregar un producto" >
+        </activity>
         <activity
             android:name=".Activity3"
-            android:label="Ganancias"></activity>
+            android:label="Ganancias" >
+        </activity>
+        <activity
+            android:name=".Activity2"
+            android:label="Mis productos" >
+        </activity>
     </application>
 
 </manifest>

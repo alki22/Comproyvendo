@@ -42,7 +42,7 @@
         android:textStyle="bold"
         android:text="Ver mis productos"
         android:background="@color/colorAccent"
-        android:onClick="openActivity" />
+        android:onClick="openActivityTwo" />
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"

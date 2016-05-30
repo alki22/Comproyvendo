@@ -40,20 +40,26 @@ public class Activity3 extends AppCompatActivity {
 
         DBHandler db = new DBHandler(this);
 
+        if (db.getProductsCount() == 0)
+            return new Earnings(0,0,0);
+
         List<Product> products = db.getAllProducts();
 
         float total, average, percentage;
-        total = average = percentage = 0;
+        int numberOfProducts;
+        total = percentage = 0;
+        numberOfProducts = db.getProductsCount();
 
         for (Product product : products) {
             total += ((float)product.getSellPrice() - (float)product.getBuyPrice())
                     * (float)product.getQuantity();
             percentage += ((((float)product.getSellPrice() / (float)product.getBuyPrice()) - 1)
                     * 100);
+            numberOfProducts += (product.getQuantity() - 1);
         }
 
-        average = total / db.getProductsCount();
-        percentage = percentage / db.getProductsCount();
+        average = total / (float) numberOfProducts;
+        percentage = percentage / (float) numberOfProducts;
 
         Earnings earnings = new Earnings(total, average, percentage);
         return earnings;

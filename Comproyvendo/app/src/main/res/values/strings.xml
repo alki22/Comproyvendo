@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Compro y vendo</string>
+     <string name="some_hint">Toca acá para filtrar&#8230;</string>
+    <string name="some_text">Miameee</string>
 </resources>
