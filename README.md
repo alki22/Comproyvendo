@@ -8,6 +8,7 @@ Compro y Vendo funciona en base a Java y una base de datos SQLite (detallado en 
 - Añadir un producto nuevo ingresando sus parámetros por *EditText*, envía Toasts si los parámetros no son correctos.
 - Visualizar su inventario. Éste se genera en base al modelo de producto en **product_info.xml**.
 - Ver sus datos económicos. 
+
 ### Clases:
 - **MainActivity**: Clase principal, se encarga de seleccionar una de las otras activities cuando se selecciona el boton correspondiente.
 - **AddProduct**: Actividad encargada de agregar productos a la base de datos, toma cuatro parámetros ingresados mediante *EditText*.
