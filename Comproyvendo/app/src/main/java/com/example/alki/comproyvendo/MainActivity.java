@@ -13,22 +13,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
+    // Opens activity for button1
     public void openActivityOne(View view) {
         int viewId = view.getId();
-        Intent intent = new Intent(this, Activity1.class);
+        Intent intent = new Intent(this, AddProduct.class);
         startActivity(intent);
     }
-
+    // Opens activity for button2
     public void openActivityTwo(View view) {
         int viewId = view.getId();
-        Intent intent = new Intent(this, Activity2.class);
+        Intent intent = new Intent(this, ProductList.class);
         startActivity(intent);
     }
-
+    // Opens activity for button3
     public void openActivityThree(View view) {
         int viewId = view.getId();
-        Intent intent = new Intent(this, Activity3.class);
+        Intent intent = new Intent(this, EarningData.class);
         startActivity(intent);
     }
 }

@@ -18,15 +18,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity1"
+            android:name=".AddProduct"
             android:label="Agregar un producto" >
         </activity>
         <activity
-            android:name=".Activity3"
+            android:name=".EarningData"
             android:label="Ganancias" >
         </activity>
         <activity
-            android:name=".Activity2"
+            android:name=".ProductList"
             android:label="Mis productos" >
         </activity>
     </application>

@@ -82,5 +82,17 @@
         android:layout_toRightOf="@+id/textView4"
         android:text="TextView"
         android:fontFamily="sans-serif-thin"/>
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:text="Borrar"
+        android:fontFamily="sans-serif-thin"
+        android:textStyle="bold"
+        android:onClick="deleteAndRestart"
+
+        />
 
 </RelativeLayout>
