@@ -10,27 +10,51 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EarningData">
     <TextView
-        android:id="@+id/totalEarnings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="35sp"
         android:text="Ganancia estimada: "
+        android:textColor="@color/textColorPrimary"
         android:fontFamily="sans-serif-thin" />
     <TextView
-        android:id="@+id/averageEarnings"
+        android:id="@+id/totalEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="35sp"
+        android:text=""
+        android:fontFamily="sans-serif-thin" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="35sp"
         android:text="Ganancia promedio: "
+        android:textColor="@color/textColorPrimary"
         android:fontFamily="sans-serif-thin" />
     <TextView
-        android:id="@+id/averagePercentage"
+        android:id="@+id/averageEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:textSize="35sp"
+        android:fontFamily="sans-serif-thin" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="35sp"
         android:text="Porcentaje promedio de ganancia: "
+        android:textColor="@color/textColorPrimary"
         android:fontFamily="sans-serif-thin"/>
+    <TextView
+        android:id="@+id/averagePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text=""
+        android:textSize="35sp"
+        android:fontFamily="sans-serif-thin" />
 </LinearLayout>
