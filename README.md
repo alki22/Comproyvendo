@@ -16,10 +16,12 @@ Compro y Vendo funciona en base a Java y una base de datos SQLite (detallado en 
 - **DBHandler**: Métodos básicos para el manejo de una base de datos.
 - **Product**: Estructura de un producto.
 - **Earnings**: Estructura para mostrar los datos respecto a las ganancias de una manera más fácil.
+
 ## ¿Qué se le puede agregar en el futuro?
 - Tengo pensado cambiar pronto el sistema de manejos arcaico por un ORM para eficientizarlo y ahorrarme lineas de código.
 - Añadir un campo de imagen a la base de datos para hacer un poco más completa a la aplicación.
 - Añadir inicio de sesión con redes sociales y compartir los productos en las mismas mediante una plantilla de imagen.
+
 ## Información
 ### Versión
 **1.0**
